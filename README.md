@@ -3,6 +3,8 @@ This code is implemented in the paper [Selecting and Optimizing Origami Flasher 
 
 Bolanos, D., Varela, K., Sargent, B., Stephen, M.A., Howell, L.L. and Magleby, S.P., 2023. “Selecting and Optimizing Origami Flasher Pattern Configurations for Finite‐Thickness Deployable Space Arrays.” Journal of Mechanical Design, 145(2), p.023301.
 
+Credit to Robert Lang's [_Tessellatica_](https://langorigami.com/article/tessellatica/) notebook for initial work on flasher optimization.
+
 ## Software
 * Matlab
 * JMP
@@ -11,8 +13,9 @@ Bolanos, D., Varela, K., Sargent, B., Stephen, M.A., Howell, L.L. and Magleby, S
 ## Description
 The _flasher_ has gained attraction in the aerospace industry because of its capability to deploy to large areas while stowing in a small volume during launch. However, this pattern is complicated to design and understand the effects of changing design parameters. A tool developed by Robert Lang, _Tessellatica_, has facilitated the design process, however not much is known about how to optimize the pattern for a specific case scenario. 
 
+<p align="center">
 <img width="162" alt="image" src="https://github.com/dianabolanos/flasher/assets/57923981/777eae38-24d1-4198-a8ec-3cba0151b58f">
-
+</p>
 
 ### Analysis
 A layout of the design variables and objectives are listed for context:
@@ -38,7 +41,9 @@ We chose to implement a genetic algorithm gradient-free approach because of the 
 
 The results of the genetic algorithm are shown below. Here we see that the function converges after about 15 generations to a deployed diameter (objective) of 2.39. The optimal design parameters provided after testing various iterations converge to m = 6, h = 2, r = 2, dr = 0.0054. 
 
+<p align="center">
 <img width="333" alt="image" src="https://github.com/dianabolanos/flasher/assets/57923981/6bd07045-0a47-42c6-97be-fdc99ae560ae">
+</p>
 
 We learned about the difficulty introduced by integrating another software in the loop. Relying on interface with Mathematica caused delays in computation time. This was mitigated through a series of efforts, such as attempting to run parallel pooled computations and reducing the evaluations in the notebook. 
 We made improvements along the way by tuning our methods to integrate well with the scope of the project, such as making decisions regarding which methods to use for mixed variable optimization. 
@@ -79,9 +84,11 @@ These steps in this process were implemented across a user-defined number of gen
 With the algorithm developed, we used it to evaluate our design problem just as we did with the commercial optimizer highlighted in the first few sections of this write-up. The results we found were very similar to what we saw from the commercial optimizer, but with two noticeable nuances. 
 
 First if we look at a plot of the mean and max objective function value for the entire population at each generation we get the following plot:
+
+<p align="center">
 <img width="259" alt="image" src="https://github.com/dianabolanos/flasher/assets/57923981/0615b665-32e5-4096-8120-18eaecc16a15">
 <img width="249" alt="image" src="https://github.com/dianabolanos/flasher/assets/57923981/e10712ac-397b-4073-93cd-bea20675ff45">
-
+</p>
 
 It can be seen here that our optimizer is a lot noisier across the generations than the commercial optimizer. This can especially be seen in the zoom-in seen above
 
